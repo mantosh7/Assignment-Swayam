@@ -1,24 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Priority queue banao (default max heap)
 priority_queue<int> pq;
 
-// Ye function element ko enqueue karta hai
 void insert(int x) {
-    pq.push(x); // element add karo
+    pq.push(x);
 }
 
-// Maximum element ko delete karo
 void removeMax() {
     if (!pq.empty()) {
-        pq.pop(); // sabse bada element delete karo
+        pq.pop();
     }
 }
 
-// Check karo kya x queue me hai ya nahi
 void find(int x) {
-    priority_queue<int> temp = pq; // temp copy banao
+    priority_queue<int> temp = pq;
     bool found = false;
     while (!temp.empty()) {
         if (temp.top() == x) {
@@ -34,7 +30,7 @@ void find(int x) {
 }
 
 int main() {
-    int q; // operations ki value
+    int q;
     cin >> q;
     while(q--) {
         string op;
