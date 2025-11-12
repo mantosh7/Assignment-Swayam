@@ -1,42 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Ye function top k frequent elements return karta hai
 vector<int> topKFrequent(vector<int>& nums, int k) {
-    unordered_map<int, int> counter; // frequency count karne ke liye
+    unordered_map<int, int> counter;
     for (int n : nums) {
-        counter[n]++; // element ka count update karo
+        counter[n]++;
     }
 
-    // Frequency ke hisaab se elements ko vector me daalo
     vector<vector<int>> freq(nums.size() + 1);
     for (auto& entry : counter) {
-        freq[entry.second].push_back(entry.first); // freq i par saare elements daalo
+        freq[entry.second].push_back(entry.first);
     }
 
     vector<int> res;
-    // Highest frequency se lowest tak jao
     for (int i = freq.size() - 1; i >= 0; i--) {
         for (int num : freq[i]) {
-            res.push_back(num); // Result me daalo
+            res.push_back(num);
             if (res.size() == k) {
-                return res; // Agar k elements ho gaye toh return karo
+                return res;
             }
         }
     }
 
-    return {}; // Default case (kabhi nahi aayega)
+    return {};
 }
 
 int main() {
     int n, k;
-    cin >> n >> k; // Pehle array ka size aur k lo
+    cin >> n >> k;
     vector<int> nums(n);
-    for (int i = 0; i < n; i++) cin >> nums[i]; // Array input lo
+    for (int i = 0; i < n; i++) cin >> nums[i];
 
-    vector<int> result = topKFrequent(nums, k); // Function call karo
+    vector<int> result = topKFrequent(nums, k);
 
-    // Result print karo
     for (int num : result) cout << num << " ";
     cout << endl;
     return 0;
